@@ -1,1 +1,1 @@
-recursive-include pyxantech/ *.yaml
+recursive-include pynuvogc/ *.yaml
