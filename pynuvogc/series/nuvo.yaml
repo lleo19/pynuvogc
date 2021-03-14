@@ -1,0 +1,53 @@
+- series: nuvo
+  name: "Nuvo Grand Concerto 8-Zone/16-Zone Audio"
+  description: "NV-I8GC"
+  num_zones: 20
+  num_sources: 6
+
+  max_balance: 18
+  max_bass: 18
+  max_treble: 18
+  max_volume: 79
+
+  protocol: nuvo
+  min_time_between_commands: 0.4
+
+  rs232:
+    baudrate: 57600
+    bytesize: 8
+    parity: 'N'
+    stopbits: 1
+    timeout: 1.0
+    write_timeout: 1.0
+
+  hardware_volume_steps: 79
+ 
+  sources:
+    1: "Source 1"
+    2: "Source 2"
+    3: "Source 3"
+    4: "Source 4"
+    5: "Source 5"
+    6: "Source 6"
+      
+  zones:
+    1: "Zone 1"
+    2: "Zone 2"
+    3: "Zone 3"
+    4: "Zone 4"
+    5: "Zone 5"
+    6: "Zone 6"
+    7: "Zone 7"
+    8: "Zone 8"
+    9: "Zone 9"
+    10: "Zone 10"
+    11: "Zone 11"
+    12: "Zone 12"
+    13: "Zone 13"
+    14: "Zone 14"
+    15: "Zone 15"
+    16: "Zone 16"
+    17: "Zone 17"
+    18: "Zone 18"
+    19: "Zone 19"
+    20: "Zone 20"

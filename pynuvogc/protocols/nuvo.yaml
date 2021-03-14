@@ -1,0 +1,63 @@
+- protocol: nuvo
+  name: "Nuvo Grand Concerto Protocol"
+
+  command_eol: "\r"
+  command_separator: ""
+
+  commands:
+    zone_status:   ':Z{zone}STATUS?'
+
+    power_status:  ''
+    set_power:     'Z{zone}POWER'
+    power_on:      'Z{zone}ON'
+    power_off:     'Z{zone}OFF'
+    all_zones_off: 'ALLOFF'
+    all_zones_on:  ''
+
+    mute_status:   ''
+    set_mute:      'Z{zone}MUTE'
+    mute_on:       'Z{zone}MUTEON'
+    mute_off:      'Z{zone}MUTEOFF'
+
+    volume_status: ''
+    set_volume:    'Z{zone}VOL{volume:02}'   # volume: 79(min)-0(max)
+    volume_up:     'Z{zone}VOL+'
+    volume_down:   'Z{zone}VOL-'
+
+    source_status: ''
+    set_source:    'Z{zone}SRC{source}'    # source: 1-6
+    source_select: 'Z{zone}SRC{source}'
+    source_up:     'Z{zone}SRC+'           # select next available source
+
+    balance_status: ''
+    set_balance:   'ZCFG{zone}BAL{balance}'  # balance: C=center|L0-18|R0-18 (need to check accepted values) 
+    balance_left:  ''
+    balance_right: ''
+
+    bass_status:   ''
+    set_bass:      'ZCFG{zone}BASS{bass:02}'     # bass: -18 to 18 increments of 2
+    bass_up:       ''
+    bass_down:     ''
+
+    treble_status: ''
+    set_treble:    'ZCFG{zone}TREB{treble:02}'   # treble: -18 to 18 increments of 2
+    treble_up:     ''
+    treble_down:   ''
+
+    button_1_press:      ':P{zone}11'
+
+  response_eol: "\r"
+  response_separator: ""
+
+  responses:
+    power_status:   '+Z(?P<zone>\d+)(?P<power>[01])'
+    source_status:  '+S(?P<zone>\d+)(?P<source>[1-4])'
+    volume_status:  '+V(?P<zone>\d+)(?P<volume>\d+)'
+    mute_status:    '+M(?P<zone>\d+)(?P<mute>[01])'
+    treble_status:  '+H(?P<zone>\d+)TR(?P<treble>\d+)'
+    bass_status:    '+L(?P<zone>\d+)BS(?P<bass>\d+)'
+    balance_status: '+B(?P<zone>\d+)BA(?P<balance>\d+)'
+
+  extras:
+    restore_zone:    [ 'set_power', 'set_source', 'set_volume', 'set_mute', 'set_bass', 'set_balance', 'set_treble' ]
+    restore_success: 'OK\r'
